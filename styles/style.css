@@ -8,9 +8,372 @@
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
+
 */
 
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--default-font, sans-serif);
+  font-variation-settings: "wght" var(--font-normal);
+  background-image: var(--bg-gradient);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100vw;
+}
+
+.content-width {
+  width: var(--content-width);
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-container {
+  background-color: #ffffff;
+  padding-inline: var(--header-inline-padding);
+  padding-block: var(--header-block-padding);
+  margin-block: 100px;
+  outline: 2px solid #000000;
+  font-family: var(--accent-font), sans-serif;
+  justify-content: center;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo {
+  /**/
+  font-size: var(--logo-size);
+  text-align: center;
+}
+
+.title {
+  /**/
+  font-size: var(--title-size);
+  text-align: center;
+  font-weight: 400;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  border: 2px solid #000;
+  background-color: #ffffff;
+  list-style: none;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.card-title {
+  font-variation-settings: "wght" var(--font-bold);
+  padding: 4px 10px;
+  border-bottom: #000000 2px solid;
+}
+
+.image-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.card-image {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+}
+
+.image-label {
+  font-weight: 400;
+  font-family: var(--accent-font), sans-serif;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px white;
+  color: rgb(0 0 0 / 0.5);
+  mix-blend-mode: hard-light;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.unique-filter1 {
+  filter: contrast(200%);
+}
+
+.unique-filter2 {
+  filter: blur(4px);
+}
+
+.unique-filter3 {
+  filter: brightness(1.5);
+}
+
+.unique-filter4 {
+  filter: contrast(140%) saturate(160%) brightness(1.1);
+}
+
+.unique-filter5 {
+  filter: sepia(50%) contrast(120%) brightness(1.1);
+}
+
+.unique-filter6 {
+  filter: grayscale(80%) sepia(110%);
+}
+
+.unique-filter7 {
+  filter: grayscale(100%);
+}
+
+.unique-filter8 {
+  filter: blur(2px) hue-rotate(180deg) brightness(0.9);
+}
+
+.card-text {
+  font-variation-settings: "wght" var(--font-normal);
+  margin: 25px 25px 0 25px;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.card-buttons {
+  /*кнопки сердечко и like*/
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: end;
+}
+.button__text {
+  font-family: var(--accent-font);
+  font-size: 14px;
+  border: none;
+  position: relative;
+  z-index: 1;
+  color: var(--button-text-color);
+  mix-blend-mode: difference;
+}
+
+/*---------------КНОПКА СЕРДЕЧКО------------------------------------------------------------------*/
+.card__icon-button {
+  background-color: transparent;
+  border: 2px solid transparent;
+  padding: 0 5px;
+  transition: border 0.3s ease;
+}
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: none;
+  border-color: #000;
+}
+
+.like-icon:hover {
+  transition: fill 0.3s linear;
+}
+
+.contour {
+  fill: var(--contour-color);
+  transition: fill 0.1s linear;
+}
+
+.core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+  transition-delay: 0.03s;
+}
+
+.main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+}
+
+.sparks {
+  fill: var(--sparks-color);
+  opacity: 0;
+}
+
+.like-icon:hover .core {
+  --animation-fill-color: #000000;
+  transition-delay: 0;
+}
+
+.like-icon:hover .main-body {
+  --animation-fill-color: #000;
+  transition-delay: 0.05s;
+}
+
+.like-icon:active .core {
+  --animation-fill-color: #ff0000;
+  transition-delay: 0;
+}
+
+.like-icon:active .main-body {
+  --animation-fill-color: #ff0000;
+  transition-delay: 0.05s;
+}
+
+.like-icon.is-liked .core {
+  --animation-fill-color: #ff0000;
+  transition-delay: 0s;
+  transition-duration: 0.3s;
+}
+.like-icon.is-liked .main-body {
+  --animation-fill-color: #ff0000;
+  transition-delay: 0.05s;
+  transition-duration: 0.3s;
+}
+.like-icon.is-liked .contour {
+  --contour-color: #ff0000;
+  transition-delay: 0.06s;
+  transition-duration: 0.3s;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks-move 0.3s 0.3s ease-in;
+}
+
+.like-icon.is-liked .heart {
+  animation: heart-grow 0.3s 0.1s ease-in;
+  transform-origin: center;
+}
+
+/*---------------------------------------------------------------------------------*/
+
+.card__like-button {
+  inline-size: 130px;
+  padding: 11px 0;
+}
+
+.button-effects {
+  /*класс для фокуса и ховера текстовых кнопок*/
+  position: relative;
+  background-color: #fff;
+  border: 2px solid #000;
+  color: #000;
+  transition: box-shadow 0.3s ease;
+}
+
+.button-effects:focus {
+  outline: none;
+}
+
+.button-effects:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0px 2px #000000;
+}
+
+.button-effects::before {
+  content: "";
+  position: absolute;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+  background-color: #000000;
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+}
+
+.button-effects:hover::before {
+  transform: scaleX(1);
+}
+
+.save-button {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  padding-inline: 20px;
+  padding-block: 17px;
+  border: 2px solid #000000;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.floppy {
+  width: var(--floppy-size);
+  height: var(--floppy-size);
+  z-index: 1;
+  color: var(--button-text-color);
+  fill: currentColor;
+  mix-blend-mode: difference;
+}
+
+.insert-floppy {
+  /*обертка для текста и свг в кнопке*/
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.dialog[open] {
+  display: flex;
+  border: none;
+  outline: #000000 2px solid;
+  padding-inline: 40px;
+  padding-block: 30px;
+  flex-direction: column;
+  gap: 30px;
+  font-family: var(--font-accent), sans-serif;
+  background-color: white;
+  inline-size: clamp(341px, calc(336.775px + 1.127vw), 353px);
+}
+
+.dialog::backdrop {
+  background-color: #000000;
+  opacity: 75%;
+}
+.dialog-text {
+  line-height: 150%;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  background-color: transparent;
+  text-transform: uppercase;
+}
+
+.modal-floppy {
+  /*свг в модальном окне*/
+  inline-size: 39px;
+  block-size: 39px;
+  flex-shrink: 0;
+}
+
+.ok-button {
+  width: 100%;
+  padding-block: 12.5px;
+}
+
+.footer {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+@media (width >= 375px) {
+  .save-button {
+    flex-direction: row;
+    padding-block: 15px;
+    padding-inline: 12px;
+  }
 }
