@@ -103,12 +103,23 @@
   font-weight: 400;
   font-family: var(--accent-font), sans-serif;
   text-transform: uppercase;
-  -webkit-text-stroke: 1px white;
   color: rgb(0 0 0 / 0.5);
   mix-blend-mode: hard-light;
   position: absolute;
   top: 25px;
   right: 25px;
+}
+
+@supports (-webkit-text-stroke: 1px white) {
+  .image-label {
+    -webkit-text-stroke: 1px white;
+  }
+}
+
+@supports (text-stroke: 1px white) {
+  .image-label {
+    text-stroke: 1px white;
+  }
 }
 
 .unique-filter1 {
@@ -297,7 +308,6 @@
 }
 
 .save-button {
-  border: none;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
