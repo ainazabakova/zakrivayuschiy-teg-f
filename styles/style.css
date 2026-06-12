@@ -20,7 +20,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  width: 100vw;
 }
 
 .content-width {
@@ -42,7 +41,7 @@
   padding-block: var(--header-block-padding);
   margin-block: 100px;
   outline: 2px solid #000000;
-  font-family: var(--accent-font), sans-serif;
+  font-family: var(--accent-font), fantasy;
   justify-content: center;
   text-transform: uppercase;
   display: flex;
@@ -51,13 +50,11 @@
 }
 
 .logo {
-  /**/
   font-size: var(--logo-size);
   text-align: center;
 }
 
 .title {
-  /**/
   font-size: var(--title-size);
   text-align: center;
   font-weight: 400;
@@ -83,6 +80,7 @@
 
 .card-title {
   font-variation-settings: "wght" var(--font-bold);
+  font-size: 1.125rem;
   padding: 4px 10px;
   border-bottom: #000000 2px solid;
 }
@@ -90,6 +88,7 @@
 .image-container {
   overflow: hidden;
   position: relative;
+  border-bottom: #000 2px solid;
 }
 
 .card-image {
@@ -101,56 +100,62 @@
 
 .image-label {
   font-weight: 400;
-  font-family: var(--accent-font), sans-serif;
+  font-family: var(--accent-font), fantasy;
   text-transform: uppercase;
-  color: rgb(0 0 0 / 0.5);
+  color: #000;
+  opacity: 50%;
   mix-blend-mode: hard-light;
   position: absolute;
   top: 25px;
   right: 25px;
+  text-shadow:
+    -1px -1px 0 white,
+    0 -1px 0 white,
+    1px -1px 0 white,
+    -1px 0 0 white,
+    1px 0 0 white,
+    -1px 1px 0 white,
+    0 1px 0 white,
+    1px 1px 0 white;
 }
 
-@supports (-webkit-text-stroke: 1px white) {
+@supports (-webkit-text-stroke: 1px white) or (text-stroke: 1px white) {
   .image-label {
     -webkit-text-stroke: 1px white;
-  }
-}
-
-@supports (text-stroke: 1px white) {
-  .image-label {
     text-stroke: 1px white;
+    text-shadow: none;
   }
 }
 
-.unique-filter1 {
+.contrast-filter {
   filter: contrast(200%);
 }
 
-.unique-filter2 {
+.blur-filter {
   filter: blur(4px);
 }
 
-.unique-filter3 {
+.brightness-filter {
   filter: brightness(1.5);
 }
 
-.unique-filter4 {
+.overbright-filter {
   filter: contrast(140%) saturate(160%) brightness(1.1);
 }
 
-.unique-filter5 {
+.vintage-filter {
   filter: sepia(50%) contrast(120%) brightness(1.1);
 }
 
-.unique-filter6 {
+.aged-filter {
   filter: grayscale(80%) sepia(110%);
 }
 
-.unique-filter7 {
+.mono-filter {
   filter: grayscale(100%);
 }
 
-.unique-filter8 {
+.glitch-filter {
   filter: blur(2px) hue-rotate(180deg) brightness(0.9);
 }
 
@@ -166,26 +171,29 @@
   padding: 25px;
   display: flex;
   flex-direction: row;
-  gap: 6px;
   justify-content: end;
+  align-items: center;
+  gap: 5px;
 }
 .button__text {
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   border: none;
   position: relative;
   z-index: 1;
-  color: var(--button-text-color);
+  color: var(--button-text-color, #fff);
   mix-blend-mode: difference;
 }
 
 /*---------------КНОПКА СЕРДЕЧКО------------------------------------------------------------------*/
 .card__icon-button {
   background-color: transparent;
-  border: 2px solid transparent;
-  padding: 0 5px;
+  padding: 0;
   transition: border 0.3s ease;
+  border: 2px solid transparent;
+  block-size: 38px;
 }
+
 .card__icon-button:focus {
   outline: none;
 }
@@ -200,23 +208,23 @@
 }
 
 .contour {
-  fill: var(--contour-color);
+  fill: var(--contour-color, #000);
   transition: fill 0.1s linear;
 }
 
 .core {
-  fill: var(--animation-fill-color);
+  fill: var(--animation-fill-color, transparent);
   transition: fill 0.3s linear;
   transition-delay: 0.03s;
 }
 
 .main-body {
-  fill: var(--animation-fill-color);
+  fill: var(--animation-fill-color, transparent);
   transition: fill 0.3s linear;
 }
 
 .sparks {
-  fill: var(--sparks-color);
+  fill: var(--sparks-color, #ff0000);
   opacity: 0;
 }
 
@@ -269,7 +277,8 @@
 
 .card__like-button {
   inline-size: 130px;
-  padding: 11px 0;
+  block-size: 38px;
+  padding: 0px 17px;
 }
 
 .button-effects {
@@ -287,7 +296,7 @@
 
 .button-effects:focus-visible {
   outline: none;
-  box-shadow: 2px 2px 0px 2px #000000;
+  box-shadow: 2px 2px 0px 0px #000000;
 }
 
 .button-effects::before {
@@ -312,20 +321,22 @@
   flex-direction: column;
   gap: 0.5rem;
   justify-content: center;
-  padding-inline: 20px;
-  padding-block: 17px;
+  padding-inline: 18px;
+  padding-block: 15px;
   border: 2px solid #000000;
   align-items: center;
   width: fit-content;
   margin: 0 auto;
   background-color: #ffffff;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 
 .floppy {
   width: var(--floppy-size);
   height: var(--floppy-size);
   z-index: 1;
-  color: var(--button-text-color);
+  color: var(--button-text-color, #fff);
   fill: currentColor;
   mix-blend-mode: difference;
 }
@@ -339,14 +350,15 @@
 }
 
 .dialog[open] {
+  height: fit-content;
   display: flex;
   border: none;
   outline: #000000 2px solid;
-  padding-inline: 40px;
+  padding-inline: 38px;
   padding-block: 30px;
   flex-direction: column;
   gap: 30px;
-  font-family: var(--font-accent), sans-serif;
+  font-family: var(--accent-font), fantasy;
   background-color: white;
   inline-size: clamp(341px, calc(336.775px + 1.127vw), 353px);
 }
@@ -355,9 +367,10 @@
   background-color: #000000;
   opacity: 75%;
 }
+
 .dialog-text {
   line-height: 150%;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   background-color: transparent;
   text-transform: uppercase;
@@ -372,18 +385,15 @@
 
 .ok-button {
   width: 100%;
-  padding-block: 12.5px;
-}
-
-.footer {
-  padding-top: 50px;
-  padding-bottom: 100px;
+  padding-block: 9px;
 }
 
 @media (width >= 375px) {
   .save-button {
     flex-direction: row;
-    padding-block: 15px;
-    padding-inline: 12px;
+  }
+
+  .dialog[open] {
+    padding-inline: 30px;
   }
 }
